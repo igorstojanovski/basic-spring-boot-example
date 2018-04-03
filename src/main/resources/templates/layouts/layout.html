@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Igorski.co</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    </head>
+    <body>
+        <div th:replace="fragments/header :: header"> This header content is going to be replaced.</div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2" layout:fragment="sidebar">
+                    <h1>This is the layout's sidebar</h1>
+                    <p>This is the sidebar placeholder. This content will be replaced if the page
+                    using the layout also defines a layout:fragment="sidebar" segment.</p>
+                </div>
+                <div class="col" layout:fragment="content">
+                    <h1>This is the Layout's main section</h1>
+                    <p>This is the main content placeholder. This content will be replaced if the page
+                        using the layout also defines a layout:fragment="content" segment. </p>
+                </div>
+            </div>
+        </div>
+
+        <footer th:insert="fragments/footer :: footer" class="footer">
+            This content will remain, but other content will be inserted after it.
+        </footer>
+    </body>
+</html>
