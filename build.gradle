@@ -10,6 +10,10 @@ buildscript {
 	}
 }
 
+plugins {
+	id 'com.google.cloud.tools.jib' version '1.0.0'
+}
+
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
@@ -36,4 +40,20 @@ dependencies {
 	implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.3.0'
 	implementation group: 'org.webjars', name: 'jquery', version: '3.3.1'
 	implementation group: 'org.webjars', name: 'bootstrap', version: '4.2.1'
+}
+
+jib {
+	from {
+		image = 'registry.hub.docker.com/openjdk:8-jdk-alpine'
+		credHelper = 'wincred'
+	}
+	to {
+		image = 'igorski/examples:jib'
+		credHelper = 'wincred'
+	}
+	container {
+		jvmFlags = ['-Djava.security.egd=file:/dev/./urandom', '-Duser.timezone=GMT+01', '-Xdebug']
+		mainClass = 'org.igorski.example.SimpleExampleApplication'
+		ports = ['8080']
+	}
 }
