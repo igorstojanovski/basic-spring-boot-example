@@ -1,4 +1,4 @@
-package org.igorski.example.controller;
+package org.igorski.example.services;
 
 import org.igorski.example.model.AppUser;
 import org.igorski.example.repositories.AppUserRepository;

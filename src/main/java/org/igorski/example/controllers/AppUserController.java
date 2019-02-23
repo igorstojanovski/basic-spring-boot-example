@@ -1,6 +1,7 @@
-package org.igorski.example.controller;
+package org.igorski.example.controllers;
 
 import org.igorski.example.model.AppUser;
+import org.igorski.example.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
