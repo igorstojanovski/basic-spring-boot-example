@@ -1,6 +1,6 @@
 package org.igorski.example.controllers;
 
-import org.igorski.example.model.AppUser;
+import org.igorski.example.model.User;
 import org.igorski.example.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,23 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/user")
-public class AppUserController {
+public class UserController {
 
     @Autowired
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public AppUser createUser(@RequestBody AppUser user) {
+    public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Iterable<AppUser> getAllUsers() {
+    public Iterable<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.GET)
-    public Iterable<AppUser> getUser(@PathVariable Long id) {
+    public Iterable<User> getUser(@PathVariable Long id) {
         return userService.getUser(id);
     }
 }

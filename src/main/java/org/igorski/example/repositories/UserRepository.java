@@ -1,6 +1,6 @@
 package org.igorski.example.repositories;
 
-import org.igorski.example.model.AppUser;
+import org.igorski.example.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -8,8 +8,6 @@ import org.springframework.data.repository.CrudRepository;
  * Date: 3/14/2018
  * Time: 10:15 PM
  */
-public interface AppUserRepository extends CrudRepository<AppUser, Long> {
-
-
-    Iterable<AppUser> findAppUserById(Long id);
+public interface UserRepository extends CrudRepository<User, Long> {
+    Iterable<User> findUserById(Long id);
 }
