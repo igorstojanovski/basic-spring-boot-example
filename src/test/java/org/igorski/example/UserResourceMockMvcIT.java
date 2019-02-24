@@ -18,8 +18,11 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -84,6 +87,9 @@ public class UserResourceMockMvcIT {
                 .post("/api/user/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(postValue))
+                .andExpect(jsonPath("$.id", is(notNullValue())))
+                .andExpect(jsonPath("$.name", is("Igor")))
+                .andExpect(jsonPath("$.surname", is("Stojanovski")))
                 .andExpect(status().isCreated())
                 .andDo(print())
                 .andReturn();
