@@ -5,6 +5,8 @@ import org.igorski.example.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Created by Igor Stojanovski.
  * Date: 3/14/2018
@@ -25,8 +27,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Iterable<User> getUser(Long id) {
-
-        return userRepository.findUserById(id);
+    public Optional<User> getUser(Long id) {
+        return userRepository.findById(id);
     }
 }

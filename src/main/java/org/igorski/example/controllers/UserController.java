@@ -3,6 +3,8 @@ package org.igorski.example.controllers;
 import org.igorski.example.model.User;
 import org.igorski.example.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -27,8 +29,9 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping(path = "{id}")
-    public Iterable<User> getUser(@PathVariable Long id) {
-        return userService.getUser(id);
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<User> getUser(@PathVariable Long id) {
+        User user = userService.getUser(id).orElseThrow();
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
