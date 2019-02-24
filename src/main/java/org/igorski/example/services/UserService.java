@@ -1,9 +1,11 @@
 package org.igorski.example.services;
 
-import org.igorski.example.model.AppUser;
-import org.igorski.example.repositories.AppUserRepository;
+import org.igorski.example.model.User;
+import org.igorski.example.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * Created by Igor Stojanovski.
@@ -14,19 +16,18 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    private AppUserRepository appUserRepository;
+    private UserRepository userRepository;
 
-    public AppUser createUser(AppUser user) {
-        return appUserRepository.save(user);
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
 
-    public Iterable<AppUser> getAllUsers() {
+    public Iterable<User> getAllUsers() {
 
-        return appUserRepository.findAll();
+        return userRepository.findAll();
     }
 
-    public Iterable<AppUser> getUser(Long id) {
-
-        return appUserRepository.findAppUserById(id);
+    public Optional<User> getUser(Long id) {
+        return userRepository.findById(id);
     }
 }
