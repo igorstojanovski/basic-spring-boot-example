@@ -49,14 +49,14 @@ public class UserResourceMockMvcIT {
 
     @Test
     public void shouldCreateUser() throws Exception {
-        User createdUser = createUser();
+        User createdUser = createUser("igorski9824");
         assertThat(createdUser.getId()).isNotNull();
         assertThat(createdUser.getPassword()).isNullOrEmpty();
     }
 
     @Test
     public void shouldGetCreatedUser() throws Exception {
-        User createdUser = createUser();
+        User createdUser = createUser("igorski3457");
         User receivedUser = getUser(createdUser.getId());
 
         assertThat(createdUser.getId()).isEqualTo(receivedUser.getId());
@@ -74,11 +74,11 @@ public class UserResourceMockMvcIT {
         return OBJECT_MAPPER.readValue(receivedUser.getResponse().getContentAsString(), User.class);
     }
 
-    private User createUser() throws Exception {
+    private User createUser(String username) throws Exception {
         User user = new User();
         user.setName("Igor");
         user.setSurname("Stojanovski");
-        user.setUsername("igorski");
+        user.setUsername(username);
         user.setPassword("1234#atdk");
 
         String postValue = OBJECT_MAPPER.writeValueAsString(user);

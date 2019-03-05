@@ -1,0 +1,25 @@
+= Working with teams
+
+== Creating a team
+
+include::{snippets}/team/http-request.adoc[]
+include::{snippets}/team/request-fields.adoc[]
+
+=== Response
+include::{snippets}/team/response-fields.adoc[]
+
+== Add members to a team
+
+include::{snippets}/addTeamMembers/http-request.adoc[]
+include::{snippets}/addTeamMembers/request-fields.adoc[]
+
+== Response
+include::{snippets}/addTeamMembers/response-fields.adoc[]
+
+== Remove members from a team
+
+include::{snippets}/removeTeamMembers/http-request.adoc[]
+include::{snippets}/removeTeamMembers/request-fields.adoc[]
+
+== Response
+include::{snippets}/removeTeamMembers/response-fields.adoc[]
