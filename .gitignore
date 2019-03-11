@@ -23,4 +23,6 @@ hs_err_pid*
 
 *.idea/
 *.mvn/
+*.gradle/
+build/
 *.iml
