@@ -1,12 +1,7 @@
 pipeline {
-  agent {
-    docker {
-      image 'openkbs/jdk11-mvn-py3'
-    }
-
-  }
+  agent none
   stages {
-    stage('') {
+    stage('error') {
       steps {
         echo 'Hello World!'
       }
