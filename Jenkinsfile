@@ -10,7 +10,8 @@ pipeline {
         }
         stage('Check env') {
           steps {
-            sh 'echo ${JAVA_HOME}'
+            sh '''echo ${JAVA_HOME}
+echo ${M2_HOME}'''
           }
         }
       }
